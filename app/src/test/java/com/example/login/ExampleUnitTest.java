@@ -1,17 +1,33 @@
-package com.example.login;
-
+// En el archivo MainActivityTest.java
+import org.junit.Before;
 import org.junit.Test;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertNotNull;
 
-/**
- * Example local unit test, which will execute on the development machine (host).
- *
- * @see <a href="http://d.android.com/tools/testing">Testing documentation</a>
- */
-public class ExampleUnitTest {
+public class MainActivityTest {
+
+    private MainActivity mainActivity;
+
+    @Before
+    public void setup() {
+        mainActivity = new MainActivity();
+    }
+
     @Test
-    public void addition_isCorrect() {
-        assertEquals(4, 2 + 2);
+    public void testLoginButtonClicked() {
+        // Verificar que los elementos no sean nulos
+        assertNotNull(mainActivity.correo);
+        assertNotNull(mainActivity.contrasena);
+        assertNotNull(mainActivity.ing);
+
+        // Simular que se ingresan un correo y una contraseña
+        mainActivity.correo.setText("correo@example.com");
+        mainActivity.contrasena.setText("contraseña");
+
+        // Llamar al método login directamente
+        mainActivity.login();
     }
 }
+
+
+
